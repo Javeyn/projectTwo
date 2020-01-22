@@ -21,8 +21,9 @@ app.use(express.static("public"));
 
 // Routes
 // =============================================================
-// ADD ROUTES HERE
-
+app.get("/", function(req, res) {
+  res.render("index")
+})
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 db.sequelize.sync().then(function() {
