@@ -7,7 +7,7 @@ module.exports = (app) => {
 
   // send create login page
   app.get('/create', (req, res) => {
-    res.render('');
+    res.render('create');
   })
 
   // send game setup page
