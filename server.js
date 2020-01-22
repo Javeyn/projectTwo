@@ -21,9 +21,10 @@ app.use(express.static("public"));
 
 // Routes
 // =============================================================
-app.get("/", function(req, res) {
-  res.render("index")
-})
+// ADD ROUTES HERE
+require("./routes/account-api-routes.js")(app);
+
+
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 db.sequelize.sync().then(function() {
