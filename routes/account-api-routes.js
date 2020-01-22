@@ -3,8 +3,8 @@ const db = require('../models');
 module.exports = (app) => {
 
   // get all highscores
-  app.get('api/highscore', (req, res) => {
-    db.User.findAll().then((data) => {
+  app.get('/api/highscore', (req, res) => {
+    db.Account.findAll().then((data) => {
       // do something with this data??
       console.log(data);
       return res.json(data);
@@ -12,8 +12,8 @@ module.exports = (app) => {
   })
 
   // get user profile
-  app.get('api/user/:id', (req, res) => {
-    db.User.findOne({
+  app.get('/api/account/:id', (req, res) => {
+    db.Account.findOne({
       where: {
         id: req.params.id
       }
@@ -23,15 +23,15 @@ module.exports = (app) => {
   })
 
   // post new user to db
-  app.post('api/newuser', (req, res) => {
-    db.User.create(req.body).then((data) => {
+  app.post('/api/newaccount', (req, res) => {
+    db.Account.create(req.body).then((data) => {
       return res.json(data);
     })
   })
 
   // update user 
-  app.put('api/user/:id', (req, res) => {
-    db.User.update(
+  app.put('/api/account/:id', (req, res) => {
+    db.Account.update(
       req.body, {
         where: {
           id: req.params.id
@@ -42,8 +42,8 @@ module.exports = (app) => {
   })
 
   // delete user
-  app.delete('api/user/:id', (req, res) => {
-    db.User.destroy({
+  app.delete('/api/account/:id', (req, res) => {
+    db.Account.destroy({
       where: {
         id: req.params.id
       }
