@@ -1,9 +1,10 @@
+const express = require("express");
 const db = require('../models');
+const router = express.Router();
 
-module.exports = (app) => {
 
   // get all highscores
-  app.get('/api/highscore', (req, res) => {
+  router.get('/api/highscore', (req, res) => {
     db.Account.findAll().then((data) => {
       // do something with this data??
       console.log(data);
@@ -12,7 +13,7 @@ module.exports = (app) => {
   })
 
   // get user profile
-  app.get('/api/account/:id', (req, res) => {
+  router.get('/api/account/:id', (req, res) => {
     db.Account.findOne({
       where: {
         id: req.params.id
@@ -23,14 +24,14 @@ module.exports = (app) => {
   })
 
   // post new user to db
-  app.post('/api/newaccount', (req, res) => {
+  router.post('/api/newaccount', (req, res) => {
     db.Account.create(req.body).then((data) => {
       return res.json(data);
     })
   })
 
   // update user 
-  app.put('/api/account/:id', (req, res) => {
+  router.put('/api/account/:id', (req, res) => {
     db.Account.update(
       req.body, {
         where: {
@@ -42,7 +43,7 @@ module.exports = (app) => {
   })
 
   // delete user
-  app.delete('/api/account/:id', (req, res) => {
+  router.delete('/api/account/:id', (req, res) => {
     db.Account.destroy({
       where: {
         id: req.params.id
@@ -51,4 +52,5 @@ module.exports = (app) => {
       return res.json(data);
     })
   })
-}
+
+module.exports = router;

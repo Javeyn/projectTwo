@@ -22,15 +22,18 @@ app.use(express.static("public"));
 // Routes
 // =============================================================
 // ADD ROUTES HERE
-require("./routes/account-api-routes.js")(app);
-require("./routes/html-routes.js")(app);
+const htmlRoutes = require('./controllers/html-controller');
+const accountRoutes = require('./controllers/account-controller');
+
+app.use(htmlRoutes);
+app.use(accountRoutes);
 
 
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync().then(function() {
-  app.listen(PORT, function() {
+db.sequelize.sync().then(function () {
+  app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
   });
 });
