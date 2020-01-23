@@ -1,11 +1,43 @@
 console.log('frontend routes linked');
 $(function() {
 
+  // redirect to 'create account' page  
   $('#createaccount').click( () => {
-    window.location.href = './create';
-    // console.log('button click');
+    $(location).attr('href', './create');
   })
 
+  // get user info and add account to db
+  $('#create').click( () => {
+    let name = $('.name').val();
+    let password = $('.password').val();
+    let confirm = $('.confirm').val();
 
+    if(password !== confirm) {
+      alert('passwords must match');
+    } else {
+
+      let newAccount = {
+        name,
+        password
+      }
+
+      $.ajax('/api/newaccount', {
+        type: 'POST',
+        data: newAccount
+      }).then( () => {
+        console.log('here');
+      })
+    }
+  })
+
+  $('#exit').click( () => {
+    $(location).attr('href', './');
+  })
+
+  $('#login').click( () => {
+    $.ajax('/api/account', {
+      // hmm
+    })
+  })
 
 })

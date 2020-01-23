@@ -12,6 +12,14 @@ const router = express.Router();
     })
   })
 
+  router.get('/api/account', (req, res) => {
+    db.Account.findOne({
+      where: {
+        // hmm 
+      }
+    })
+  })
+
   // get user profile
   router.get('/api/account/:id', (req, res) => {
     db.Account.findOne({
