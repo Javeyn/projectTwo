@@ -19,7 +19,7 @@ const router = express.Router();
 
   // send game
   router.get('/launch', (req, res) => {
-    res.render('')
+    res.render('game')
   })
 
   module.exports = router;
