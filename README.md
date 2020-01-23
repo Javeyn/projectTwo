@@ -3,15 +3,15 @@
 
 ## Table of Contents
 
-Description
+[Description](#Description)
 
-StartingUp
+[StartingUp](#StartingUp)
 
-Functionality
+[Functionality](#Functionality)
 
-GameModes
+[GameModes](#GameModes)
 
-Notes
+[Notes](#Notes)
 
 ## Description
 

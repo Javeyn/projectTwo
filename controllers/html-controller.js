@@ -9,17 +9,17 @@ const router = express.Router();
 
   // send create login page
   router.get('/create', (req, res) => {
-    res.render('');
+    res.render('create');
   })
 
   // send game setup page
   router.get('/usersetup', (req, res) => {
-    res.render('');
+    res.render('usersetup');
   })
 
   // send game
   router.get('/launch', (req, res) => {
-    res.render('')
+    res.render('game')
   })
 
   module.exports = router;
