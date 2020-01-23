@@ -16,6 +16,10 @@ const ENEMY_VERTICAL_PADDING = 70;
 const ENEMY_VERTICAL_SPACING = 80;
 const ENEMY_COOLDOWN = 5.0;
 
+var currentScore= 0;
+const pointValue= 1000;
+
+
 const GAME_STATE = {
   lastTime: Date.now(),
   leftPressed: false,
@@ -104,7 +108,7 @@ function updatePlayer(dt, $container) {
 
 function createLaser($container, x, y) {
   const $element = document.createElement("img");
-  $element.src = "img/laser-blue-1.png";
+  $element.src = "public/assets/img/spinach.png";
   $element.className = "laser";
   $container.appendChild($element);
   const laser = { x, y, $element };
@@ -182,6 +186,8 @@ function updateEnemies(dt, $container) {
 function destroyEnemy($container, enemy) {
   $container.removeChild(enemy.$element);
   enemy.isDead = true;
+  currentScore= currentScore + pointValue;
+  console.log(currentScore)
 }
 
 function createEnemyLaser($container, x, y) {
