@@ -20,6 +20,9 @@ var currentScore= 0;
 const pointValue= 1000;
 
 
+
+
+
 const GAME_STATE = {
   lastTime: Date.now(),
   leftPressed: false,
@@ -33,6 +36,12 @@ const GAME_STATE = {
   enemyLasers: [],
   gameOver: false
 };
+
+function playMusic(){
+  const audio = new Audio("public/assets/sounds/firsttry.wav");
+  audio.play();
+}
+
 
 function rectsIntersect(r1, r2) {
   return !(
@@ -67,7 +76,7 @@ function createPlayer($container) {
   GAME_STATE.playerX = GAME_WIDTH / 2;
   GAME_STATE.playerY = GAME_HEIGHT - 50;
   const $player = document.createElement("img");
-  $player.src = "img/player-blue-1.png";
+  $player.src = "public/assets/img/player-blue-1.png";
   $player.className = "player";
   $container.appendChild($player);
   setPosition($player, GAME_STATE.playerX, GAME_STATE.playerY);
@@ -76,7 +85,7 @@ function createPlayer($container) {
 function destroyPlayer($container, player) {
   $container.removeChild(player);
   GAME_STATE.gameOver = true;
-  const audio = new Audio("sound/sfx-lose.ogg");
+  const audio = new Audio("public/assets/sounds/sfx-lose.ogg");
   audio.play();
 }
 
@@ -113,7 +122,7 @@ function createLaser($container, x, y) {
   $container.appendChild($element);
   const laser = { x, y, $element };
   GAME_STATE.lasers.push(laser);
-  const audio = new Audio("sound/sfx-laser1.ogg");
+  const audio = new Audio("public/assets/sounds/firsttryS.ogg");
   audio.play();
   setPosition($element, x, y);
 }
@@ -151,7 +160,7 @@ function destroyLaser($container, laser) {
 
 function createEnemy($container, x, y) {
   const $element = document.createElement("img");
-  $element.src = "img/enemy-blue-1.png";
+  $element.src = "public/assets/img/denis.png";
   $element.className = "enemy";
   $container.appendChild($element);
   const enemy = {
@@ -192,7 +201,7 @@ function destroyEnemy($container, enemy) {
 
 function createEnemyLaser($container, x, y) {
   const $element = document.createElement("img");
-  $element.src = "img/laser-red-5.png";
+  $element.src = "public/assets/img/manatee.png";
   $element.className = "enemy-laser";
   $container.appendChild($element);
   const laser = { x, y, $element };
@@ -224,6 +233,7 @@ function updateEnemyLasers(dt, $container) {
 function init() {
   const $container = document.querySelector(".game");
   createPlayer($container);
+ 
 
   const enemySpacing =
     (GAME_WIDTH - ENEMY_HORIZONTAL_PADDING * 2) / (ENEMIES_PER_ROW - 1);
@@ -285,6 +295,10 @@ function onKeyUp(e) {
 }
 
 init();
+// window.onload = function playMusic(){
+//   const audio = new Audio("public/assets/sounds/firsttry.wav");
+//   audio.play();
+// }
 window.addEventListener("keydown", onKeyDown);
 window.addEventListener("keyup", onKeyUp);
 window.requestAnimationFrame(update);
