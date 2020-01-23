@@ -20,7 +20,7 @@ var currentScore = 0;
 const pointValue = 1000;
 var scoreMultiplier = "";
 
-const shipOne = "public/assets/img/player-red-1.png";
+const shipOne = "./assets/img/player-red-1.png";
 const shipTwo = "public/assets/img/player-blue-1.png";
 const shipThree = "public/assets/img/player-green-1.png";
 
@@ -171,7 +171,7 @@ function updatePlayer(dt, $container) {
 
 function createLaser($container, x, y) {
   const $element = document.createElement("img");
-  $element.src = "public/assets/img/spinach.png";
+  $element.src = "./assets/img/spinach.png";
   $element.className = "laser";
   $container.appendChild($element);
   const laser = { x, y, $element };
@@ -214,7 +214,7 @@ function destroyLaser($container, laser) {
 
 function createEnemy($container, x, y) {
   const $element = document.createElement("img");
-  $element.src = "public/assets/img/denis.png";
+  $element.src = "./assets/img/denis.png";
   $element.className = "enemy";
   $container.appendChild($element);
   const enemy = {
@@ -255,7 +255,7 @@ function destroyEnemy($container, enemy) {
 
 function createEnemyLaser($container, x, y) {
   const $element = document.createElement("img");
-  $element.src = "public/assets/img/manatee.png";
+  $element.src = "./assets/img/manatee.png";
   $element.className = "enemy-laser";
   $container.appendChild($element);
   const laser = { x, y, $element };
