@@ -27,6 +27,7 @@ $(function () {
       }).then(() => {
         console.log('new account added');
       })
+      $(location).attr('href', '/usersetup')
     }
   })
 
@@ -45,11 +46,13 @@ $(function () {
   })
 
 
+  $('#startgame').click(()=>{
+    $(location).attr('href', '/launch');
+  });
 
-
-
-
-
+  $('#logout').click(()=>{
+    $(location).attr('href', '/');
+  });
 
 
 
