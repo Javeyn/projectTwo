@@ -1,92 +1,160 @@
 <style>
-        body {
-            display: flex;
-            min-height: 100vh;
-            flex-direction: column;
-            background-color: black;
-        }
+    body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+        background-color: black;
+    }
 
-        main {
-            flex: 1 0 auto;
-        }
-    </style>
+    main {
+        flex: 1 0 auto;
+    }
+</style>
 
-    <header>
-        <nav>
-            <div class="nav-wrapper black">
-                <a href="#" class="brand-logo black center">Code Shooters</a>
-            </div>
-        </nav>
-    </header>
+<header>
+    <nav>
+        <div class="nav-wrapper black">
+            <a href="#" class="brand-logo black center">Code Shooters</a>
+        </div>
+    </nav>
+</header>
 
-    <main>
-        <!-- if the two br's aren't there, it covers the navbar -->
-        <!-- the br's are there for a reason -->
-        <br><br>
-        <div class="container">
-            <!-- USERNAME AND SHIP CHOICE -->
-            <div class="row">
-                <div class="col s6">
-                    <div class="nes-container is-dark with-title">
-                        <p class="title">USERNAME</p>
-                        <p>USE HANDLEBARS TO ENTER THEIR USERNAME HERE</p>
-                    </div>
-                </div>
-                <div class="col s6">
-                    <div class="nes-container is-dark with-title">
-                        <p class="title">CURRENT HIGH SCORE</p>
-                        <p>HANDLEBARS TO SHOW HIGH SCORE</p>
-                    </div>
+<main>
+    <!-- if the two br's aren't there, it covers the navbar -->
+    <!-- the br's are there for a reason -->
+    <br><br>
+    <div class="container">
+        <!-- USERNAME AND SHIP CHOICE -->
+        <div class="row">
+            <div class="col s6">
+                <div class="nes-container is-dark with-title">
+                    <p class="title">USERNAME</p>
+                    <p>USE HANDLEBARS TO ENTER THEIR USERNAME HERE</p>
                 </div>
             </div>
-            <!-- SONG CHOICE AND CURRENT HIGH SCORE -->
-            <div class="row">
-                <div class="col s6">
-                    <div class="nes-container is-dark with-title">
-                        <p class="title">SONG CHOICE</p>
-                        <p>CHECKBOX? DROPDOWN?</p>
-                    </div>
-                </div>
-                <div class="col s6">
-                    <div class="nes-container is-dark with-title">
-                        <p class="title">SHIP CHOICE</p>
-                        <p>SHOW IMAGES IN HERE</p>
-                    </div>
-                </div>
-            </div>
-            <!-- GAME MODE AND DIFFICULTY LEVEL -->
-            <div class="row">
-                <div class="col s6">
-                    <div class="nes-container is-dark with-title">
-                        <p class="title">GAME MODE</p>
-                        <p>CHECKBOX? DROPDOWN?</p>
-                    </div>
-                </div>
-                <div class="col s6">
-                    <div class="nes-container is-dark with-title">
-                        <p class="title">DIFFICULTY LEVEL</p>
-                        <p>EASY ~ MEDIUM ~ HARD</p>
-                    </div>
-                </div>
-            </div>
-            <!-- BUTTONS TO PLAY GAME OR LOG OUT -->
-            <div class="row">
-                <div class="col s6">
-                    <button type="button" class="nes-btn">PLAY GAME</button>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s6">
-                    <button type="button" class="nes-btn">Log Out</button>
+            <div class="col s6">
+                <div class="nes-container is-dark with-title">
+                    <p class="title">CURRENT HIGH SCORE</p>
+                    <p>HANDLEBARS TO SHOW HIGH SCORE</p>
                 </div>
             </div>
         </div>
-    </main>
-
-    <footer class="page-footer black">
-        <div class="footer-copyright">
-            <div class="container center">
-                © 2020 Created by Austin, Nick, Jack, and Jenny
+        <!-- SONG CHOICE AND CURRENT HIGH SCORE -->
+        <div class="row">
+            <div class="col s6">
+                <div class="nes-container is-dark with-title">
+                    <p class="title">SONG CHOICE</p>
+                    <!-- RADIO BUTTON SONG 1 -->
+                    <div style="background-color:#212529; padding: 1rem 0;">
+                        <label>
+                            <input id="songone" type="radio" class="nes-radio is-dark" name="answer-dark song"
+                                checked />
+                            <span>Song 1</span>
+                        </label>
+                        <!-- RADIO BUTTON SONG 2 -->
+                        <label>
+                            <input id="songtwo" type="radio" class="nes-radio is-dark" name="answer-dark song" />
+                            <span>Song 2</span>
+                        </label>
+                        <!-- RADIO BUTTON SONG 3 -->
+                        <label>
+                            <input id="songthree" type="radio" class="nes-radio is-dark" name="answer-dark song" />
+                            <span>Song 3</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col s6">
+                <div class="nes-container is-dark with-title">
+                    <p class="title">SHIP CHOICE</p>
+                    <!-- RADIO BUTTON SHIP 1 -->
+                    <div style="background-color:#212529; padding: 1rem 0;">
+                        <label>
+                            <input id="shipone" type="radio" class="nes-radio is-dark" name="answer-dark ship"
+                                checked />
+                            <span>Ship 1 *insert pic here*</insert></span>
+                        </label>
+                        <!-- RADIO BUTTON SHIP 2 -->
+                        <label>
+                            <input id="shiptwo" type="radio" class="nes-radio is-dark" name="answer-dark ship" />
+                            <span>Ship 2 *insert pic here*</span>
+                        </label>
+                        <!-- RADIO BUTTON SHIP 3 -->
+                        <label>
+                            <input id="shipthree" type="radio" class="nes-radio is-dark" name="answer-dark ship" />
+                            <span>Ship 3 *insert pic here*</span>
+                        </label>
+                    </div>
+                </div>
             </div>
         </div>
-    </footer>
+        <!-- GAME MODE AND DIFFICULTY LEVEL -->
+        <div class="row">
+            <div class="col s6">
+                <div class="nes-container is-dark with-title">
+                    <p class="title">GAME MODE</p>
+                    <!-- RADIO BUTTON GAME MODE JOE -->
+                    <div style="background-color:#212529; padding: 1rem 0;">
+                        <label>
+                            <input id="modejoe" type="radio" class="nes-radio is-dark" name="answer-dark mode"
+                                checked />
+                            <span>Joe'pocolypse</insert></span>
+                        </label>
+                        <!-- RADIO BUTTON GAME MODE DENIS -->
+                        <label>
+                            <input id="modedenis" type="radio" class="nes-radio is-dark" name="answer-dark mode" />
+                            <span>Menacing Denis</span>
+                        </label>
+                        <!-- RADIO BUTTON GAME MODE CLINT -->
+                        <label>
+                            <input id="modeclint" type="radio" class="nes-radio is-dark" name="answer-dark mode" />
+                            <span>Clint'astrophy</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col s6">
+                <div class="nes-container is-dark with-title">
+                    <p class="title">DIFFICULTY LEVEL</p>
+                    <!-- RADIO BUTTON DIFFICULTY EASY -->
+                    <div style="background-color:#212529; padding: 1rem 0;">
+                        <label>
+                            <input id="leveleasy" type="radio" class="nes-radio is-dark" name="answer-dark level"
+                                checked />
+                            <span>EASY</insert></span>
+                        </label>
+                        <!-- RADIO BUTTON DIFFICULTY MEDIUM -->
+                        <label>
+                            <input id="levelnormal" type="radio" class="nes-radio is-dark" name="answer-dark level" />
+                            <span>NORMAL</span>
+                        </label>
+                        <!-- RADIO BUTTON DIFFICULTY HIGH -->
+                        <label>
+                            <input id="levelhardcore" type="radio" class="nes-radio is-dark" name="answer-dark level" />
+                            <span>HARD CORE</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- BUTTONS TO PLAY GAME OR LOG OUT -->
+        <div class="row">
+            <div class="col s6">
+                <button id="startgame" type="button" class="nes-btn">PLAY GAME</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s6">
+                <button id="logout" type="button" class="nes-btn">Log Out</button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="page-footer black">
+    <div class="footer-copyright">
+        <div class="container center">
+            © 2020 Created by Austin, Nick, Jack, and Jenny
+        </div>
+    </div>
+</footer>
