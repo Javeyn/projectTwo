@@ -63,8 +63,12 @@ $(function () {
       type: 'POST',
       data: pwObj
     }).then((stuff) => {
-      console.log(stuff);
-      // $(location).attr('href', './usersetup')
+      console.log(`stuff = ${stuff}`);
+      if(stuff === 'OK') {
+        $(location).attr('href', './usersetup')
+      } else {
+        alert('incorrect login information');
+      }
     })
   })
 

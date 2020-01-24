@@ -31,8 +31,16 @@ router.post('/api/account/:name', (req, res) => {
       name: req.params.name
     }
   }).then((data) => {
-    console.log(data.dataValues.password);
-    res.send(data);
+    let x = `"${data.dataValues.password}"`;
+    let y = JSON.stringify(req.body.pass);
+    console.log(`x = ${x} and y = ${y}`);
+    if(x === y) {
+      res.sendStatus(200);
+      res.send(data);
+    } else {
+      res.send('login error');
+      res.sendStatus(404);
+    }
   })
 })
 
