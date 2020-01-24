@@ -25,9 +25,9 @@ const shipOne = "./assets/img/player-red-1.png";
 const shipTwo = "public/assets/img/player-blue-1.png";
 const shipThree = "public/assets/img/player-green-1.png";
 
-const songOne = "public/assets/sounds/firsttry.wav";
-const songTwo = "public/assets/sounds/firsttry.wav";
-const songThree = "public/assets/sounds/firsttry.wav";
+const songOne = "public/assets/sounds/flow.mid";
+const songTwo = "public/assets/sounds/panic.mid";
+const songThree = "public/assets/sounds/drunken.mid";
 
 function diffEasy(PLAYER_MAX_SPEED, LASER_MAX_SPEED, ENEMY_COOLDOWN) {
   var easy = .5;
@@ -79,7 +79,7 @@ function clintMode() {
 };
 //this function is currently not working
 function playMusic() {
-  const audio = new Audio("public/assets/sounds/firsttry.wav");
+  const audio = new Audio(songThree);
   audio.play();
 }
 const GAME_STATE = {
@@ -140,8 +140,9 @@ function createPlayer($container) {
 function destroyPlayer($container, player) {
   $container.removeChild(player);
   GAME_STATE.gameOver = true;
-  const audio = new Audio("public/assets/sounds/sfx-lose.ogg");
-  audio.play();
+  // const audio = new Audio("public/assets/sounds/sfx-lose.ogg");
+  // audio.play();
+  playMusic();
   currentScore=currentScore * lossMulti;
   console.log(currentScore)
 }
@@ -179,7 +180,7 @@ function createLaser($container, x, y) {
   $container.appendChild($element);
   const laser = { x, y, $element };
   GAME_STATE.lasers.push(laser);
-  const audio = new Audio("public/assets/sounds/firsttrsssy.ogg");
+  const audio = new Audio("public/assets/sounds/drunken.mid");
   audio.play();
   setPosition($element, x, y);
 }
