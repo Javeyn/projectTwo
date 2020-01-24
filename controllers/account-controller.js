@@ -1,6 +1,7 @@
 const express = require("express");
 const db = require('../models');
 const router = express.Router();
+// const bcrypt = require('bcryptjs');
 
 
 // get all highscores
@@ -18,20 +19,27 @@ router.get('/api/account/:name', (req, res) => {
       name: req.params.name
     }
   }).then((data) => {
-    console.log(data.name)
-    res.send('success');
+    console.log(data);
+    res.send(data);
   })
 })
 
-// get user profile
-// not sure we need this route...
-router.get('/api/account/:id', (req, res) => {
+// check password
+router.post('/api/account/:name', (req, res) => {
   db.Account.findOne({
     where: {
-      id: req.params.id
+      name: req.params.name
     }
   }).then((data) => {
-    return res.json(data);
+    let x = `"${data.dataValues.password}"`;
+    let y = JSON.stringify(req.body.pass);
+    if(x === y) {
+      res.sendStatus(200);
+      res.send(data);
+    } else {
+      res.send('login error');
+      res.sendStatus(404);
+    }
   })
 })
 
