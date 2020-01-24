@@ -29,6 +29,7 @@ const songOne = "public/assets/sounds/flow.mid";
 const songTwo = "public/assets/sounds/panic.mid";
 const songThree = "public/assets/sounds/drunken.mid";
 
+
 function diffEasy(PLAYER_MAX_SPEED, LASER_MAX_SPEED, ENEMY_COOLDOWN) {
   var easy = .5;
   var easyLaser = 2;
@@ -254,7 +255,8 @@ function destroyEnemy($container, enemy) {
   $container.removeChild(enemy.$element);
   enemy.isDead = true;
   currentScore = currentScore + pointValue;
-  console.log(currentScore)
+  console.log(currentScore);
+  document.querySelector(".score").textContent = "Score Keeper: " + currentScore;
 }
 
 function createEnemyLaser($container, x, y) {
@@ -313,12 +315,15 @@ function update(e) {
   const dt = (currentTime - GAME_STATE.lastTime) / 1000.0;
 
   if (GAME_STATE.gameOver) {
+    // currentScore = currentScore * lossmulti;
+    document.querySelector(".score").textContent = "Score Keeper: " + currentScore;
+    document.querySelector(".finalScoreLoss").textContent = "Final Score: " + currentScore;
     document.querySelector(".game-over").style.display = "block";
     return;
-    currentScore= currentScore * lossmulti;
   }
 
   if (playerHasWon()) {
+    document.querySelector(".finalScoreWin").textContent = "Final Score: " + currentScore;
     document.querySelector(".congratulations").style.display = "block";
     return;
   }
