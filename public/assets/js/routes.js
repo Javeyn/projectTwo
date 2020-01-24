@@ -57,13 +57,11 @@ $(function () {
       name, 
       pass
     }
-    console.log(pwObj);
 
     $.ajax(query, {
       type: 'POST',
       data: pwObj
     }).then((stuff) => {
-      console.log(`stuff = ${stuff}`);
       if(stuff === 'OK') {
         $(location).attr('href', './usersetup')
       } else {
