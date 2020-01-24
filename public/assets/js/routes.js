@@ -44,4 +44,10 @@ $(function () {
     })
   })
 
+  $('#launchgame').click(() => {
+    var audio = new Audio('../sounds/drunken.mp3');
+    audio.play();
+    $(location).attr('href', '/launch');
+  });
+
 })
