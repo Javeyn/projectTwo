@@ -40,7 +40,7 @@ $(function () {
     $.ajax(query, {
       type: 'GET',
     }).then(() => {
-      $(location).attr('href', './usersetup')
+      $(location).attr('href', `./usersetup?name=${name}`)
     })
   })
 

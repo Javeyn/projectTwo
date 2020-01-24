@@ -9,6 +9,7 @@
     main {
         flex: 1 0 auto;
     }
+
     img {
         padding-top: 5px;
         padding-bottom: 5px;
@@ -40,6 +41,7 @@
             <div class="col s6">
                 <div class="nes-container is-dark with-title is-centered">
                     <p class="title">USERNAME</p>
+                    {{dataValues}}
                     <p>{{name}}</p>
                 </div>
             </div>
@@ -83,17 +85,20 @@
                         <label>
                             <input id="shipone" type="radio" class="nes-radio is-dark" name="answer-dark ship"
                                 checked />
-                            <span>Ship 1 <img src="./assets/img/player-blue-1.png" alt="Blue Space Ship" height="35px"></span>
+                            <span>Ship 1 <img src="./assets/img/player-blue-1.png" alt="Blue Space Ship"
+                                    height="35px"></span>
                         </label><br>
                         <!-- RADIO BUTTON SHIP 2 -->
                         <label>
                             <input id="shiptwo" type="radio" class="nes-radio is-dark" name="answer-dark ship" />
-                            <span>Ship 2 <img src="./assets/img/player-green-2.png" alt="Green Space Ship" height="35px"></span>
+                            <span>Ship 2 <img src="./assets/img/player-green-2.png" alt="Green Space Ship"
+                                    height="35px"></span>
                         </label><br>
                         <!-- RADIO BUTTON SHIP 3 -->
                         <label>
                             <input id="shipthree" type="radio" class="nes-radio is-dark" name="answer-dark ship" />
-                            <span>Ship 3 <img src="./assets/img/player-red-3.png" alt="Red Space Ship" height="35px"></span>
+                            <span>Ship 3 <img src="./assets/img/player-red-3.png" alt="Red Space Ship"
+                                    height="35px"></span>
                         </label>
                     </div>
                 </div>

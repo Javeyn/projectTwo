@@ -27,6 +27,7 @@ router.get('/api/account/:name', (req, res) => {
 // not sure we need this route...
 router.get('/api/account/:id', (req, res) => {
   db.Account.findOne({
+    raw: true,
     where: {
       id: req.params.id
     }
