@@ -1,6 +1,6 @@
 # projectTwo
 ### An amazing game by Nick, Jenny, Austin, and Jack
-![image of Launch Screen](public/assets/img/homeScreen.png)
+![image of Launch Screen](/public/assets/img/homeScreen.png)
 ## Table of Contents
 
 [Description](#Description)
@@ -21,7 +21,7 @@ Code Shooters takes a familiar game and gives it a **big** flavor boost. Start b
 
 When you start the app up, you are presented with a login screen. You will enter your credentials here if you have previously created an account. Otherwise, please proceed to the create acount page, and create your account.
 
-![image of create account Screen](public/assets/img/createScreen.png)
+![image of create account Screen](/public/assets/img/createScreen.png)
 
 <ul>
 <li>In field "1" you will enter in your login name. Make sure to pick something easy to remember. Case sensitivity is important!</li>
@@ -30,7 +30,7 @@ When you start the app up, you are presented with a login screen. You will enter
 
 </ul>
 
-![image of launchscreen](public/assets/img/launchScreen.png)
+![image of launchscreen](/public/assets/img/launchScreen.png)
 <br>
 Once you have created your account and successfully logged in, you will arrive at the launch screen.
 
