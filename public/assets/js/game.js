@@ -6,20 +6,82 @@ const GAME_WIDTH = 800;
 const GAME_HEIGHT = 600;
 
 const PLAYER_WIDTH = 20;
-const PLAYER_MAX_SPEED = 600.0;
-const LASER_MAX_SPEED = 300.0;
-const LASER_COOLDOWN = 0.5;
+var PLAYER_MAX_SPEED = 600.0;
+var LASER_MAX_SPEED = 300.0;
+var LASER_COOLDOWN = .5;
 
 const ENEMIES_PER_ROW = 10;
 const ENEMY_HORIZONTAL_PADDING = 80;
 const ENEMY_VERTICAL_PADDING = 70;
 const ENEMY_VERTICAL_SPACING = 80;
-const ENEMY_COOLDOWN = 5.0;
+var ENEMY_COOLDOWN = 5.0;
 
-var currentScore= 0;
-const pointValue= 1000;
+var currentScore = 0;
+const pointValue = 1000;
+var scoreMultiplier = "";
+var lossMulti=.25;
 
+const shipOne = "./assets/img/player-red-1.png";
+const shipTwo = "public/assets/img/player-blue-1.png";
+const shipThree = "public/assets/img/player-green-1.png";
 
+const songOne = "public/assets/sounds/firsttry.wav";
+const songTwo = "public/assets/sounds/firsttry.wav";
+const songThree = "public/assets/sounds/firsttry.wav";
+
+function diffEasy(PLAYER_MAX_SPEED, LASER_MAX_SPEED, ENEMY_COOLDOWN) {
+  var easy = .5;
+  var easyLaser = 2;
+  scoreMultiplier = .01;
+  PLAYER_MAX_SPEED = PLAYER_MAX_SPEED * easy;
+  LASER_MAX_SPEED = LASER_MAX_SPEED * easy;
+  ENEMY_COOLDOWN = ENEMY_COOLDOWN * easyLaser;
+  currentScore = currentScore * scoreMultiplier;
+};
+
+function diffMedium(PLAYER_MAX_SPEED, LASER_MAX_SPEED, ENEMY_COOLDOWN) {
+  var medium = 1;
+  var mediumLaser = 1;
+  scoreMultiplier = 1;
+  PLAYER_MAX_SPEED = PLAYER_MAX_SPEED * medium;
+  LASER_MAX_SPEED = LASER_MAX_SPEED * medium;
+  ENEMY_COOLDOWN = ENEMY_COOLDOWN * mediumLaser;
+  currentScore = currentScore * scoreMultiplier;
+};
+
+function diffHard(PLAYER_MAX_SPEED, LASER_MAX_SPEED, ENEMY_COOLDOWN) {
+  var hardcore = 2;
+  var hardcoreLaser = .5;
+  scoreMultiplier = 100;
+  PLAYER_MAX_SPEED = PLAYER_MAX_SPEED * hardcore;
+  LASER_MAX_SPEED = LASER_MAX_SPEED * hardcore;
+  ENEMY_COOLDOWN = ENEMY_COOLDOWN * hardcoreLaser;
+  currentScore = currentScore * scoreMultiplier;
+};
+
+function joeMode() {
+  PLAYER_MAX_SPEED=600;
+  LASER_MAX_SPEED=50;
+  ENEMY_COOLDOWN=.1;
+
+};
+function denisMode() {
+  PLAYER_MAX_SPEED=200;
+  LASER_MAX_SPEED=100;
+  ENEMY_COOLDOWN=2;
+  
+};
+function clintMode() {
+  PLAYER_MAX_SPEED=1200;
+  LASER_MAX_SPEED=1200;
+  ENEMY_COOLDOWN=2;
+  
+};
+//this function is currently not working
+function playMusic() {
+  const audio = new Audio("public/assets/sounds/firsttry.wav");
+  audio.play();
+}
 const GAME_STATE = {
   lastTime: Date.now(),
   leftPressed: false,
@@ -33,6 +95,8 @@ const GAME_STATE = {
   enemyLasers: [],
   gameOver: false
 };
+
+
 
 function rectsIntersect(r1, r2) {
   return !(
@@ -67,7 +131,7 @@ function createPlayer($container) {
   GAME_STATE.playerX = GAME_WIDTH / 2;
   GAME_STATE.playerY = GAME_HEIGHT - 50;
   const $player = document.createElement("img");
-  $player.src = "img/player-blue-1.png";
+  $player.src = shipOne;
   $player.className = "player";
   $container.appendChild($player);
   setPosition($player, GAME_STATE.playerX, GAME_STATE.playerY);
@@ -76,8 +140,10 @@ function createPlayer($container) {
 function destroyPlayer($container, player) {
   $container.removeChild(player);
   GAME_STATE.gameOver = true;
-  const audio = new Audio("sound/sfx-lose.ogg");
+  const audio = new Audio("public/assets/sounds/sfx-lose.ogg");
   audio.play();
+  currentScore=currentScore * lossMulti;
+  console.log(currentScore)
 }
 
 function updatePlayer(dt, $container) {
@@ -108,12 +174,12 @@ function updatePlayer(dt, $container) {
 
 function createLaser($container, x, y) {
   const $element = document.createElement("img");
-  $element.src = "public/assets/img/spinach.png";
+  $element.src = "./assets/img/spinach.png";
   $element.className = "laser";
   $container.appendChild($element);
   const laser = { x, y, $element };
   GAME_STATE.lasers.push(laser);
-  const audio = new Audio("sound/sfx-laser1.ogg");
+  const audio = new Audio("public/assets/sounds/firsttrsssy.ogg");
   audio.play();
   setPosition($element, x, y);
 }
@@ -151,7 +217,7 @@ function destroyLaser($container, laser) {
 
 function createEnemy($container, x, y) {
   const $element = document.createElement("img");
-  $element.src = "img/enemy-blue-1.png";
+  $element.src = "./assets/img/denis.png";
   $element.className = "enemy";
   $container.appendChild($element);
   const enemy = {
@@ -186,13 +252,13 @@ function updateEnemies(dt, $container) {
 function destroyEnemy($container, enemy) {
   $container.removeChild(enemy.$element);
   enemy.isDead = true;
-  currentScore= currentScore + pointValue;
+  currentScore = currentScore + pointValue;
   console.log(currentScore)
 }
 
 function createEnemyLaser($container, x, y) {
   const $element = document.createElement("img");
-  $element.src = "img/laser-red-5.png";
+  $element.src = "./assets/img/manatee.png";
   $element.className = "enemy-laser";
   $container.appendChild($element);
   const laser = { x, y, $element };
@@ -225,6 +291,7 @@ function init() {
   const $container = document.querySelector(".game");
   createPlayer($container);
 
+
   const enemySpacing =
     (GAME_WIDTH - ENEMY_HORIZONTAL_PADDING * 2) / (ENEMIES_PER_ROW - 1);
   for (let j = 0; j < 3; j++) {
@@ -247,6 +314,7 @@ function update(e) {
   if (GAME_STATE.gameOver) {
     document.querySelector(".game-over").style.display = "block";
     return;
+    currentScore= currentScore * lossmulti;
   }
 
   if (playerHasWon()) {
@@ -285,6 +353,10 @@ function onKeyUp(e) {
 }
 
 init();
+// window.onload = function playMusic(){
+//   const audio = new Audio("public/assets/sounds/firsttry.wav");
+//   audio.play();
+// }
 window.addEventListener("keydown", onKeyDown);
 window.addEventListener("keyup", onKeyUp);
 window.requestAnimationFrame(update);

@@ -1,13 +1,62 @@
-<h1>Create Player</h1>
+<style>
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: black;
+  }
 
-<form>
-  User Name:<br>
-  <input type="text"><br>
-  User Password:<br>
-  <input type="password"><br>
-  Confirm Password:<br>
-  <input type="password">
-</form>
+  main {
+    flex: 1 0 auto;
+  }
+</style>
 
-<button>Exit</button>
-<button>Create</button>
+<header>
+  <nav>
+    <div class="nav-wrapper black">
+      <a href="#" class="brand-logo black center">Spinach Shooters</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <!-- if the two br's aren't there, it covers the navbar -->
+  <!-- the br's are there for a reason -->
+  <br><br>
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+        <div class="nes-container is-rounded is-dark is-centered">
+          <h1>Create Player</h1>
+        </div>
+      </div>
+    </div>
+    <form>
+      <div style="background-color:#212529; padding: 1rem;" class="nes-field is-inline">
+        <label for="dark_field" style="color:#fff;">Username:</label>
+        <input type="text" id="dark_field" class="nes-input is-dark name">
+      </div>
+      <div style="background-color:#212529; padding: 1rem;" class="nes-field is-inline">
+        <label for="dark_field" style="color:#fff;">Password:</label>
+        <input type="password" id="dark_field" class="nes-input is-dark password">
+      </div>
+      <div style="background-color:#212529; padding: 1rem;" class="nes-field is-inline">
+        <label for="dark_field" style="color:#fff;">Confirm Password:</label>
+        <input type="password" id="dark_field" class="nes-input is-dark confirm">
+      </div>
+    </form>
+    <br><br>
+    <div class="row">
+      <button type="button" id='exit' class="nes-btn">Exit</button>
+      <button type="button" id='create' class="nes-btn">Create</button>
+    </div>
+  </div>
+</main>
+
+<footer class="page-footer black">
+  <div class="footer-copyright">
+    <div class="container center">
+      © 2020 Created by Austin, Nick, Jack, and Jenny
+    </div>
+  </div>
+</footer>
