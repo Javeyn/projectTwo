@@ -19,6 +19,7 @@ var ENEMY_COOLDOWN = 5.0;
 var currentScore = 0;
 const pointValue = 1000;
 var scoreMultiplier = "";
+var lossMulti=.25;
 
 const shipOne = "./assets/img/player-red-1.png";
 const shipTwo = "public/assets/img/player-blue-1.png";
@@ -141,6 +142,8 @@ function destroyPlayer($container, player) {
   GAME_STATE.gameOver = true;
   const audio = new Audio("public/assets/sounds/sfx-lose.ogg");
   audio.play();
+  currentScore=currentScore * lossMulti;
+  console.log(currentScore)
 }
 
 function updatePlayer(dt, $container) {
@@ -311,6 +314,7 @@ function update(e) {
   if (GAME_STATE.gameOver) {
     document.querySelector(".game-over").style.display = "block";
     return;
+    currentScore= currentScore * lossmulti;
   }
 
   if (playerHasWon()) {
