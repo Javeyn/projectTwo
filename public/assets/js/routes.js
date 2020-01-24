@@ -26,6 +26,7 @@ $(function () {
         data: newAccount
       }).then(() => {
         console.log('new account added');
+        $(location).attr('href', './');
       })
     }
   })
@@ -34,23 +35,45 @@ $(function () {
     $(location).attr('href', '/');
   })
 
+  // $('#login').click(() => {
+  //   let name = $('.username').val().trim();
+  //   let pw = $('.password').val().trim();
+  //   console.log(pw);
+  //   let query = `/api/account/${name}`;
+  //   $.ajax(query, {
+  //     type: 'GET',
+  //   }).then((stuff) => {
+  //     console.log(stuff);
+  //     $(location).attr('href', './usersetup')
+  //   })
+  // })
   $('#login').click(() => {
     let name = $('.username').val().trim();
+    let pass = $('.password').val().trim();
+    // console.log(pw);
     let query = `/api/account/${name}`;
+
+    let pwObj = {
+      name, 
+      pass
+    }
+
     $.ajax(query, {
-      type: 'GET',
-    }).then(() => {
-      $(location).attr('href', './usersetup')
+      type: 'POST',
+      data: pwObj
+    }).then((stuff) => {
+      if(stuff === 'OK') {
+        $(location).attr('href', './usersetup')
+      } else {
+        alert('incorrect login information');
+      }
     })
   })
 
-
-
-
-
-
-
-
-
+  $('#launchgame').click(() => {
+    var audio = new Audio('../sounds/drunken.mp3');
+    audio.play();
+    $(location).attr('href', '/launch');
+  });
 
 })

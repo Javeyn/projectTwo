@@ -1,6 +1,6 @@
 # projectTwo
 ### An amazing game by Nick, Jenny, Austin, and Jack
-
+![image of Launch Screen](public/assets/img/homeScreen.png)
 ## Table of Contents
 
 [Description](#Description)
@@ -21,7 +21,27 @@ Code Shooters takes a familiar game and gives it a **big** flavor boost. Start b
 
 When you start the app up, you are presented with a login screen. You will enter your credentials here if you have previously created an account. Otherwise, please proceed to the create acount page, and create your account.
 
-Once you have created your account and successfully logged in, you will arrive at the launch screen. From the launch screen you will be able to see your top scores, the top 5 scores from all players, and how many wins you have accumulated in each game mode. From here you can also select a background soundtrack, a ship of choice, and a game mode. Once you are ready, click "Launch" at the bottom of the screen to begin playing the game.
+![image of create account Screen](public/assets/img/createScreen.png)
+
+<ul>
+<li>In field "1" you will enter in your login name. Make sure to pick something easy to remember. Case sensitivity is important!</li>
+
+<li>In field's "2" and "3" you will be prompted to enter in a password used to log into Spinach Shooters. Make sure it is easy to remember. Case sensitivity again is uber important!</li>
+
+</ul>
+
+![image of launchscreen](public/assets/img/launchScreen.png)
+<br>
+Once you have created your account and successfully logged in, you will arrive at the launch screen.
+
+<ul>
+<li>Field "1" your username is displayed</li>
+<li>Field "2" will show your high score and difficulty.</li>
+<li>Field "3" will allow you to select your musical number that plays during the game.</li>
+<li>Field "4" will allow you to choose one of our amazing ships.</li>
+<li>Field "5" will allow you to choose one of our amazing game mode.</li>
+<li>Field "6" will allow you to select a difficulty that feels right for you.</li>
+</ul>
 
 ## Functionality
 
