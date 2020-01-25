@@ -1,3 +1,5 @@
+const boom = require('./setupFunctions');
+
 const KEY_CODE_LEFT = 37;
 const KEY_CODE_RIGHT = 39;
 const KEY_CODE_SPACE = 32;
@@ -19,7 +21,7 @@ var ENEMY_COOLDOWN = 5.0;
 var currentScore = 0;
 const pointValue = 1000;
 var scoreMultiplier = "";
-var lossMulti=.25;
+var lossMulti = .25;
 
 const shipOne = "./assets/img/player-red-1.png";
 const shipTwo = "public/assets/img/player-blue-1.png";
@@ -60,22 +62,22 @@ function diffHard(PLAYER_MAX_SPEED, LASER_MAX_SPEED, ENEMY_COOLDOWN) {
 };
 
 function joeMode() {
-  PLAYER_MAX_SPEED=600;
-  LASER_MAX_SPEED=50;
-  ENEMY_COOLDOWN=.1;
+  PLAYER_MAX_SPEED = 600;
+  LASER_MAX_SPEED = 50;
+  ENEMY_COOLDOWN = .1;
 
 };
 function denisMode() {
-  PLAYER_MAX_SPEED=200;
-  LASER_MAX_SPEED=100;
-  ENEMY_COOLDOWN=2;
-  
+  PLAYER_MAX_SPEED = 200;
+  LASER_MAX_SPEED = 100;
+  ENEMY_COOLDOWN = 2;
+
 };
 function clintMode() {
-  PLAYER_MAX_SPEED=1200;
-  LASER_MAX_SPEED=1200;
-  ENEMY_COOLDOWN=2;
-  
+  PLAYER_MAX_SPEED = 1200;
+  LASER_MAX_SPEED = 1200;
+  ENEMY_COOLDOWN = 2;
+
 };
 //this function is currently not working
 function playMusic() {
@@ -143,7 +145,7 @@ function destroyPlayer($container, player) {
   // const audio = new Audio("public/assets/sounds/sfx-lose.ogg");
   // audio.play();
   playMusic();
-  currentScore=currentScore * lossMulti;
+  currentScore = currentScore * lossMulti;
   console.log(currentScore)
 }
 
@@ -315,7 +317,7 @@ function update(e) {
   if (GAME_STATE.gameOver) {
     document.querySelector(".game-over").style.display = "block";
     return;
-    currentScore= currentScore * lossmulti;
+    currentScore = currentScore * lossmulti;
   }
 
   if (playerHasWon()) {
