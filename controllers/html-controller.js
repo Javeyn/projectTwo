@@ -12,6 +12,11 @@ const router = express.Router();
     res.render('create');
   })
 
+  // send highscore page
+  router.get('/highscores', (req, res) => {
+    res.render('highscores');
+  })
+
 // send game setup page
 router.get('/usersetup', (req, res) => {
   console.log('query paramater:', req.query.name)
