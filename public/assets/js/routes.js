@@ -35,22 +35,13 @@ $(function () {
     $(location).attr('href', '/');
   })
 
-  // $('#login').click(() => {
-  //   let name = $('.username').val().trim();
-  //   let pw = $('.password').val().trim();
-  //   console.log(pw);
-  //   let query = `/api/account/${name}`;
-  //   $.ajax(query, {
-  //     type: 'GET',
-  //   }).then((stuff) => {
-  //     console.log(stuff);
-  //     $(location).attr('href', './usersetup')
-  //   })
-  // })
+  $('#logout').click(() => {
+    $(location).attr('href', '/');
+  })
+
   $('#login').click(() => {
     let name = $('.username').val().trim();
     let pass = $('.password').val().trim();
-    // console.log(pw);
     let query = `/api/account/${name}`;
 
     let pwObj = {
