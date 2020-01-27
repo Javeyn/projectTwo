@@ -3,11 +3,11 @@ module.exports = function (sequelize, DataTypes) {
     score: {
       type: DataTypes.INTEGER,
       allowNull: false
-    },
-    difficulty: {
-      type: DataTypes.STRING,
-      allowNull: false
     }
+    // difficulty: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false
+    // }
   });
   Highscore.associate = function (models) {
     Highscore.belongsTo(models.Account, {
