@@ -1,6 +1,11 @@
 console.log('frontend routes linked');
 $(function () {
 
+  $.get('/randojoke').then(data => {
+    $('#joke').text(data) 
+  }) 
+
+
   // redirect to 'create account' page  
   $('#createaccount').click(() => {
     $(location).attr('href', './create');
