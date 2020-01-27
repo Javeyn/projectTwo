@@ -1,4 +1,4 @@
-# projectTwo
+# Spinach Shooters
 ### An amazing game by Nick, Jenny, Austin, and Jack
 ![image of Launch Screen](public/assets/img/homeScreen.png)
 ## Table of Contents
@@ -11,11 +11,11 @@
 
 [GameModes](#GameModes)
 
-[Notes](#Notes)
+[AboutUs](#AboutUs)
 
 ## Description
 
-Code Shooters takes a familiar game and gives it a **big** flavor boost. Start by creating your account and logging in to begin tracking your scores, skills and wins in each game mode!
+Spinach Shooters takes a familiar game and gives it a **big** flavor boost. Start by creating your account and logging in to begin tracking your scores, skills and wins in each game mode!
 
 ## StartingUp
 
@@ -58,17 +58,43 @@ Our game uses a variety of different libraries and technology, including:
 
 ## GameModes
 
-Code Shooters comes with three game modes, and 3 difficulties.
+Spinach Shooters comes with three game modes, and 3 difficulties.
 
-# Joe'pocolypse Mode
-In Jo-poc mode, You will be tasked with fighting off **redacted** with **redacted**. The Joes will fire incredibly fast lasers, and if you dont have Joe-di reflexes, you will end up as Code Dust!
+### Joe'pocolypse Mode
+In Jo-poc mode, You will be tasked with fighting off a fleet of Joes with your trusty spinach shooter. The Joes will fire incredibly fast lasers, and if you dont have Joe-di reflexes, you will end up as shrimp dust!
 
-# Menacing Denis Mode
-In Men-den mode,You will be tasked with fighting off **redacted** with **redacted**. The Denis' will fire tons of slow lasers, and your ship will also move much slower. It can be menacing if you arent ready for the wave of **redacted** constantly flying at you!
+### Menacing Denis Mode
+In Men-den mode,You will be tasked with fighting off a fleet of Denis'. The Denis' will fire tons of slow lasers, and your ship will also move much slower. It can be menacing if you arent ready for the wave of manatees constantly flying at you!
 
-# Clint'astrophe Mode
-In Clint mode, You will be tasked with fighting off **redacted** with **redacted**. The Clint's seem like a normal challenge, but your firing rate will be drastically reduced. Make each shot count, because one wrong move and its game over!
+### Clint'astrophe Mode
+In Clint mode, You will be tasked with fighting off a fleet of Clints. The Clint's seem like a normal challenge, but your firing rate will be drastically reduced. Make each shot count, because one wrong move and its game over!
 
-## Notes
+## AboutUs
 
-This is the place where we thank eachother and also talk about what was hard with this project. So, thanks guys. Thanks Joe/Denis/Clint. Thanks coffee, and thanks nap time.
+We are the builders and contributors to Spinach Shooters.
+
+### Jenny Thurnau
+![Jenny](public/assets/img/jenny.jpg)
+<br>
+[Jennys github](https://github.com/CraazyCraaz "Jenny Thurnau")
+
+### Austin Finke
+![alt text](public/assets/img/austin.jpg)
+<br>
+[Austins github](https://github.com/austinfinke "Austin Finke")
+
+### Jack Sorensen
+![alt text](public/assets/img/jack.jpg)
+<br>
+[Jacks github](https://github.com/javeyn "Jack Sorensen")
+
+### Nick Seto
+![alt text](public/assets/img/nick.jpg)
+<br>
+[Nicks github](https://github.com/nick555555e "Nick Seto")
+<br>
+
+We want to thank everyone for taking the time to play. Thank you Joe, Denis, and Clint for your ideas, feedback, and help. 
+
+To see the repo for this project, please visit the [repo](https://github.com/Javeyn/projectTwo "Spinach Shooters Repo") on github.
+
