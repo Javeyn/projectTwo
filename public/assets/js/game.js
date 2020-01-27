@@ -346,7 +346,7 @@ function update(e) {
     document.querySelector(".finalScoreLoss").textContent = "Final Score: " + currentScore;
     document.querySelector(".game-over").style.display = "block";
     let scoreObj = {
-      currentScore
+      score: currentScore
     };
     $.ajax('/api/newscore', {
       type: 'POST',
@@ -361,7 +361,7 @@ function update(e) {
     document.querySelector(".finalScoreWin").textContent = "Final Score: " + currentScore;
     document.querySelector(".congratulations").style.display = "block";
     let scoreObj = {
-      currentScore
+      score: currentScore
     };
     $.ajax('/api/newscore', {
       type: 'POST',
