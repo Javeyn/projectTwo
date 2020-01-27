@@ -466,7 +466,7 @@ function viewUserSetup() {
 }
 
 function viewHighscore() {
-  $(location).attr('href', '.highscore');
+  $(location).attr('href', './highscores');
 }
 
 window.addEventListener("keydown", onKeyDown);

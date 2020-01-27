@@ -45,7 +45,7 @@ $(function () {
     let query = `/api/account/${name}`;
 
     let pwObj = {
-      name, 
+      name,
       pass
     }
 
@@ -53,7 +53,7 @@ $(function () {
       type: 'POST',
       data: pwObj
     }).then((stuff) => {
-      if(stuff === 'OK') {
+      if (stuff === 'OK') {
         $(location).attr('href', `./usersetup?name=${name}`)
       } else {
         alert('incorrect login information');
@@ -62,8 +62,6 @@ $(function () {
   })
 
   $('#launchgame').click(() => {
-    var audio = new Audio('../sounds/drunken.mp3');
-    audio.play();
     $(location).attr('href', '/launch');
   });
 
