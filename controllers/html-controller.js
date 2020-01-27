@@ -1,5 +1,5 @@
 const express = require("express");
-// const db = require('../models');
+const db = require('../models');
 const router = express.Router();
 
   // send homepage
@@ -12,10 +12,20 @@ const router = express.Router();
     res.render('create');
   })
 
-  // send game setup page
-  router.get('/usersetup', (req, res) => {
-    res.render('usersetup');
+// send game setup page
+router.get('/usersetup', (req, res) => {
+  console.log('query paramater:', req.query.name)
+  db.Account.findOne({
+    raw: true,
+    where: {
+      name: req.query.name
+    }
+  }).then(dbUser => {
+    console.log(dbUser, "userdata")
+    res.render('usersetup', dbUser);
   })
+})
+
 
   // send game
   router.get('/launch', (req, res) => {
