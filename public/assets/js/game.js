@@ -219,7 +219,7 @@ function destroyLaser($container, laser) {
 
 function createEnemy($container, x, y) {
   const $element = document.createElement("img");
-  $element.src = "./assets/img/denis.png";
+  $element.src = "./assets/img/joe.png";
   $element.className = "enemy";
   $container.appendChild($element);
   const enemy = {
