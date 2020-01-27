@@ -16,18 +16,19 @@ const ENEMY_VERTICAL_PADDING = 70;
 const ENEMY_VERTICAL_SPACING = 80;
 var ENEMY_COOLDOWN = 5.0;
 
+
 var currentScore = 0;
 const pointValue = 1000;
 var scoreMultiplier = "";
 var lossMulti=.25;
 
-const shipOne = "./assets/img/player-red-1.png";
-const shipTwo = "public/assets/img/player-blue-1.png";
-const shipThree = "public/assets/img/player-green-1.png";
+const shipone = "./assets/img/player-red-1.png";
+const shipowo = "public/assets/img/player-blue-1.png";
+const shipthree = "public/assets/img/player-green-1.png";
 
-const songOne = "public/assets/sounds/flow.mid";
-const songTwo = "public/assets/sounds/panic.mid";
-const songThree = "public/assets/sounds/drunken.mid";
+const songone = "public/assets/sounds/flow.mid";
+const songtwo = "public/assets/sounds/panic.mid";
+const songthree = "public/assets/sounds/drunken.mid";
 
 
 function diffEasy(PLAYER_MAX_SPEED, LASER_MAX_SPEED, ENEMY_COOLDOWN) {
@@ -80,7 +81,7 @@ function clintMode() {
 };
 //this function is currently not working
 function playMusic() {
-  const audio = new Audio(songThree);
+  const audio = new Audio(songone);
   audio.play();
 }
 const GAME_STATE = {
@@ -96,7 +97,6 @@ const GAME_STATE = {
   enemyLasers: [],
   gameOver: false
 };
-
 
 
 function rectsIntersect(r1, r2) {
@@ -132,7 +132,7 @@ function createPlayer($container) {
   GAME_STATE.playerX = GAME_WIDTH / 2;
   GAME_STATE.playerY = GAME_HEIGHT - 50;
   const $player = document.createElement("img");
-  $player.src = shipOne;
+  $player.src = shipone;
   $player.className = "player";
   $container.appendChild($player);
   setPosition($player, GAME_STATE.playerX, GAME_STATE.playerY);
@@ -381,6 +381,37 @@ init();
 //   const audio = new Audio("public/assets/sounds/firsttry.wav");
 //   audio.play();
 // }
+
+
+let launchBtn = $('#launchgame');
+
+
+function songSelection() {
+  launchBtn.click(() => {
+    return $('input[name="song"]:checked').id;
+  })
+}
+
+function shipSelection() {
+  launchBtn.click(() => {
+    return $('input[name="ship"]:checked').id;
+  })
+}
+
+function modeSelection() {
+  launchBtn.click(() => {
+    return $('input[name="mode"]:checked').id;
+  })
+}
+
+function viewUserSetup() {
+  $(location).attr('href', './usersetup');
+}
+
+function viewHighscore() {
+  $(location).attr('href', '.highscore');
+}
+
 window.addEventListener("keydown", onKeyDown);
 window.addEventListener("keyup", onKeyUp);
 window.requestAnimationFrame(update);

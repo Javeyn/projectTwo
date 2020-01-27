@@ -26,7 +26,6 @@ function modeSelection() {
   })
 }
 
-module.exports = boom;
 
 
 
