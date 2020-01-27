@@ -319,12 +319,30 @@ function update(e) {
     document.querySelector(".score").textContent = "Score Keeper: " + currentScore;
     document.querySelector(".finalScoreLoss").textContent = "Final Score: " + currentScore;
     document.querySelector(".game-over").style.display = "block";
+    let scoreObj = {
+      currentScore
+    };
+    $.ajax('/api/newscore', {
+      type: 'POST',
+      data: scoreObj
+    }).then(() => {
+      console.log('new score added');
+    });
     return;
   }
 
   if (playerHasWon()) {
     document.querySelector(".finalScoreWin").textContent = "Final Score: " + currentScore;
     document.querySelector(".congratulations").style.display = "block";
+    let scoreObj = {
+      currentScore
+    };
+    $.ajax('/api/newscore', {
+      type: 'POST',
+      data: scoreObj
+    }).then(() => {
+      console.log('new score added');
+    });
     return;
   }
 
