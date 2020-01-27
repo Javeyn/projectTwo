@@ -54,6 +54,9 @@
                         </thead>
                         <tbody>
                             <tr>
+                                {{#each highscores}}
+                                    <p>{{score}}</p>
+                                {{/each}}
                                 <td>{{name}}</td>
                                 <td>{{score}}<i class="nes-icon trophy is-large"></i></td>
                             </tr>

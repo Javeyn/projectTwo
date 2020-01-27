@@ -3,7 +3,6 @@ const db = require('../models');
 const router = express.Router();
 var oneLinerJoke = require('one-liner-joke');
 
-
 // send homepage
 router.get('/', (req, res) => {
   res.render('index');
@@ -21,7 +20,14 @@ router.get('/create', (req, res) => {
 
 // send highscore page
 router.get('/highscores', (req, res) => {
-  res.render('highscores');
+  db.Highscore.findAll({}).then((data) => {
+    console.log(data);
+    const rawData = data.map(obj=>obj.get({plain:true}));
+    let hsObj = {
+      highscores: rawData
+    };
+    res.render('highscores', hsObj);
+  })
 })
 
 // send game setup page
