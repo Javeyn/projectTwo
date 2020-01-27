@@ -1,0 +1,102 @@
+<style>
+    body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+        background-color: black;
+    }
+
+    main {
+        flex: 1 0 auto;
+    }
+
+    i {
+        float: right;
+    }
+
+    td {
+        text-align: center;
+    }
+</style>
+
+<header>
+    <nav>
+        <div class="nav-wrapper black">
+            <a href="#" class="brand-logo black center">Spinach Shooters</a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <!-- if the two br's aren't there, it covers the navbar -->
+    <!-- the br's are there for a reason -->
+    <br><br>
+    <div class="container">
+
+        <div class="row">
+            <div class="col s12">
+                <div class="nes-container is-rounded is-dark is-centered">
+                    <h4>HIGHSCORES</h4>
+                    <p>of really cool people</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <div class="nes-table-responsive">
+                    <table class="nes-table is-bordered is-dark is-centered">
+                        <thead>
+                            <tr>
+                                <th>USERNAME</th>
+                                <th>SCORE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>username here</td>
+                                <td> biggest highscore<i class="nes-icon trophy is-large"></i></td>
+                            </tr>
+                            <tr>
+                                <td>username here</td>
+                                <td> big highscore<i class="nes-icon trophy is-medium"></i></td>
+                            </tr>
+                            <tr>
+                                <td>username here</td>
+                                <td>big highscore<i class="nes-icon trophy is-small"></i></td>
+                            </tr>
+                            <tr>
+                                <td>username here</td>
+                                <td>big highscore<i class="nes-icon trophy is-small"></i></td>
+                            </tr>
+                            <tr>
+                                <td>username here</td>
+                                <td>big highscore<i class="nes-icon trophy is-small"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s6">
+                <button id="usersetup" type="button" class="nes-btn">User Page</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s6">
+                <button id="launch" type="button" class="nes-btn">Back to Game</button>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<footer class="page-footer black">
+    <div class="footer-copyright">
+        <div class="container center">
+            © 2020 Created by Austin, Nick, Jack, and Jenny
+        </div>
+    </div>
+</footer>
