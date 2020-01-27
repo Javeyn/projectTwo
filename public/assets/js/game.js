@@ -461,8 +461,8 @@ function modeSelection() {
   })
 }
 
-function viewUserSetup() {
-  $(location).attr('href', './usersetup');
+function viewMainPage() {
+  $(location).attr('href', './');
 }
 
 function viewHighscore() {
