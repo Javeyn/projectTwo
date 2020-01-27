@@ -26,7 +26,7 @@ var testnumber=1;
 var songCounter=false;
 
 const explosion = new Audio("./assets/sounds/explosion.mp3");
-// const dolphin = new Audio("./assets/sounds/dolphin.mp3");
+const dolphin = new Audio("./assets/sounds/dolphin.mp3");
 // const explosion = new Audio("./assets/sounds/explosion.wav");
 
 
@@ -48,48 +48,54 @@ const songtwo = "./assets/sounds/panic.mp3";
 const songthree = "./assets/sounds/drunken.mp3";
 
 
-function diffEasy(PLAYER_MAX_SPEED, LASER_MAX_SPEED, ENEMY_COOLDOWN) {
+function diffEasy() {
   var easy = .5;
   var easyLaser = 2;
-  scoreMultiplier = .01;
-  PLAYER_MAX_SPEED = PLAYER_MAX_SPEED * easy;
+  // scoreMultiplier = .01;
+  PLAYER_MAX_SPEED = PLAYER_MAX_SPEED * easyLaser;
   LASER_MAX_SPEED = LASER_MAX_SPEED * easy;
   ENEMY_COOLDOWN = ENEMY_COOLDOWN * easyLaser;
+  // LASER_COOLDOWN = .5;
  pointValue=10
 };
 
-function diffMedium(PLAYER_MAX_SPEED, LASER_MAX_SPEED, ENEMY_COOLDOWN) {
+function diffMedium() {
   var medium = 1;
   var mediumLaser = 1;
-  scoreMultiplier = 1;
-  PLAYER_MAX_SPEED = PLAYER_MAX_SPEED * medium;
+  // scoreMultiplier = 1;
+  PLAYER_MAX_SPEED=600;
   LASER_MAX_SPEED = LASER_MAX_SPEED * medium;
   ENEMY_COOLDOWN = ENEMY_COOLDOWN * mediumLaser;
+  // LASER_COOLDOWN = 1;
   pointValue=1000
 };
 
-function diffHard(PLAYER_MAX_SPEED, LASER_MAX_SPEED, ENEMY_COOLDOWN) {
-  var hardcore = 2;
-  var hardcoreLaser = .5;
-  var hardcoreSpeed = .5;
-  scoreMultiplier = 100;
+function diffHard() {
+  var hardcore = 1.5;
+  var hardcoreLaser = .75;
+  var hardcoreSpeed = .75;
+  // scoreMultiplier = 100;
   PLAYER_MAX_SPEED = PLAYER_MAX_SPEED*hardcoreSpeed;
   LASER_MAX_SPEED = LASER_MAX_SPEED*hardcore;
   ENEMY_COOLDOWN = ENEMY_COOLDOWN*hardcoreLaser;
+  // LASER_COOLDOWN = 1;
   pointValue=100000;
   lossMulti=.0025;
 };
 
 function joeMode() {
-  PLAYER_MAX_SPEED=600;
-  LASER_MAX_SPEED=1000;
+  PLAYER_MAX_SPEED=800;
+  joeMulti = 2;
+  LASER_MAX_SPEED=600;
   ENEMY_COOLDOWN=10;
+  pointValue=pointValue*joeMulti;
   enemyFace=joeFace;
 };
 function denisMode() {
-  PLAYER_MAX_SPEED=200;
-  LASER_MAX_SPEED=100;
-  ENEMY_COOLDOWN=3.5;
+  LASER_COOLDOWN = 1;
+  PLAYER_MAX_SPEED=300;
+  LASER_MAX_SPEED=50;
+  ENEMY_COOLDOWN=8;
   enemyFace=dennisFace
 };
 function clintMode() {
@@ -346,7 +352,7 @@ function update(e) {
     document.querySelector(".finalScoreLoss").textContent = "Final Score: " + currentScore;
     document.querySelector(".game-over").style.display = "block";
     let scoreObj = {
-      score: currentScore
+      currentScore
     };
     $.ajax('/api/newscore', {
       type: 'POST',
@@ -361,8 +367,12 @@ function update(e) {
     document.querySelector(".finalScoreWin").textContent = "Final Score: " + currentScore;
     document.querySelector(".congratulations").style.display = "block";
     let scoreObj = {
-      score: currentScore
+      currentScore
     };
+    gameMusic.pause();
+    dolphin.play();
+gameMusic.currentTime = 0;
+
     $.ajax('/api/newscore', {
       type: 'POST',
       data: scoreObj
@@ -407,30 +417,32 @@ function onKeyUp(e) {
  //game mode
  if (testnumber=testnumber) {
   
-  clintMode();
-}
+  // clintMode();
+  joeMode();
+// }
+// }
 //  if (condition) {
 //   joeMode()
 // }
 // if (condition) {
 //   denisMode()
-// } else {
-//   denisMode()
-// }
+} else {
+  denisMode()
+}
 //game difficulty
-// if (testnumber!=testnumber) {
+if (testnumber!=testnumber) {
   
-  // diffEasy();
+  diffEasy();
 // }
 //  if (condition) {
 //   diffMedium()
 // }
 // if (condition) {
 //   diffHard()
-// } else {
+} else {
   // diffMedium()
-  // diffHard()
-// }
+  diffHard()
+}
 
 init();
 
@@ -466,7 +478,7 @@ function viewUserSetup() {
 }
 
 function viewHighscore() {
-  $(location).attr('href', './highscores');
+  $(location).attr('href', '.highscore');
 }
 
 window.addEventListener("keydown", onKeyDown);
