@@ -1,4 +1,6 @@
 var express = require("express");
+var oneLinerJoke = require('one-liner-joke');
+
 
 // Sets up the Express App
 // =============================================================
