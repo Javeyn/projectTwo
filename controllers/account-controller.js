@@ -6,7 +6,9 @@ const router = express.Router();
 
 // get all highscores
 router.get('/api/highscore', (req, res) => {
-  db.Account.findAll().then((data) => {
+  db.Account.findAll({
+    include: [db.Highscore]
+  }).then((data) => {
     // do something with this data??
     console.log(data);
     return res.json(data);
@@ -17,7 +19,8 @@ router.get('/api/account/:name', (req, res) => {
   db.Account.findOne({
     where: {
       name: req.params.name
-    }
+    },
+    include: [db.Highscore]
   }).then((data) => {
     console.log(data);
     res.send(data);
