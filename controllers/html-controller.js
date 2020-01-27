@@ -10,8 +10,10 @@ router.get('/', (req, res) => {
 })
 
 router.get('/randojoke', (req, res) => {
-  const joke = oneLinerJoke.getRandomJoke();
-  res.json(joke);
+  const joke = oneLinerJoke.getRandomJoke({
+    'exclude_tags': ['fat', 'black', 'racist', 'marriage']
+  });
+  res.json(joke.body)
 })
 
 // send create login page
