@@ -20,10 +20,10 @@ var ENEMY_COOLDOWN = 5.0;
 var currentScore = 0;
 var pointValue = 1000;
 var scoreMultiplier = "";
-var lossMulti=.25;
-var enemyFace="";
-var testnumber=1;
-var songCounter=false;
+var lossMulti = .25;
+var enemyFace = "";
+var testnumber = 1;
+var songCounter = false;
 
 const explosion = new Audio("./assets/sounds/explosion.mp3");
 const dolphin = new Audio("./assets/sounds/dolphin.mp3");
@@ -32,12 +32,12 @@ const dolphin = new Audio("./assets/sounds/dolphin.mp3");
 
 //  var gameMusic = new Audio("./assets/sounds/flow.mp3");
 //  var gameMusic = new Audio("./assets/sounds/panic.mp3");
- var gameMusic = new Audio("./assets/sounds/drunken.mp3");
+var gameMusic = new Audio("./assets/sounds/drunken.mp3");
 
 
-const joeFace="./assets/img/joe.png" ;
-const dennisFace="./assets/img/denis.png";
-const clintFace="./assets/img/clint.png";
+const joeFace = "./assets/img/joe.png";
+const dennisFace = "./assets/img/denis.png";
+const clintFace = "./assets/img/clint.png";
 
 const shipone = "./assets/img/player-red-1.png";
 const shiptwo = "./assets/img/player-blue-1.png";
@@ -56,18 +56,18 @@ function diffEasy() {
   LASER_MAX_SPEED = LASER_MAX_SPEED * easy;
   ENEMY_COOLDOWN = ENEMY_COOLDOWN * easyLaser;
   // LASER_COOLDOWN = .5;
- pointValue=10
+  pointValue = 10
 };
 
 function diffMedium() {
   var medium = 1;
   var mediumLaser = 1;
   // scoreMultiplier = 1;
-  PLAYER_MAX_SPEED=600;
+  PLAYER_MAX_SPEED = 600;
   LASER_MAX_SPEED = LASER_MAX_SPEED * medium;
   ENEMY_COOLDOWN = ENEMY_COOLDOWN * mediumLaser;
   // LASER_COOLDOWN = 1;
-  pointValue=1000
+  pointValue = 1000
 };
 
 function diffHard() {
@@ -75,39 +75,39 @@ function diffHard() {
   var hardcoreLaser = .75;
   var hardcoreSpeed = .75;
   // scoreMultiplier = 100;
-  PLAYER_MAX_SPEED = PLAYER_MAX_SPEED*hardcoreSpeed;
-  LASER_MAX_SPEED = LASER_MAX_SPEED*hardcore;
-  ENEMY_COOLDOWN = ENEMY_COOLDOWN*hardcoreLaser;
+  PLAYER_MAX_SPEED = PLAYER_MAX_SPEED * hardcoreSpeed;
+  LASER_MAX_SPEED = LASER_MAX_SPEED * hardcore;
+  ENEMY_COOLDOWN = ENEMY_COOLDOWN * hardcoreLaser;
   // LASER_COOLDOWN = 1;
-  pointValue=100000;
-  lossMulti=.0025;
+  pointValue = 100000;
+  lossMulti = .0025;
 };
 
 function joeMode() {
-  PLAYER_MAX_SPEED=800;
+  PLAYER_MAX_SPEED = 800;
   joeMulti = 2;
-  LASER_MAX_SPEED=600;
-  ENEMY_COOLDOWN=10;
-  pointValue=pointValue*joeMulti;
-  enemyFace=joeFace;
+  LASER_MAX_SPEED = 600;
+  ENEMY_COOLDOWN = 10;
+  pointValue = pointValue * joeMulti;
+  enemyFace = joeFace;
 };
 function denisMode() {
   LASER_COOLDOWN = 1;
-  PLAYER_MAX_SPEED=300;
-  LASER_MAX_SPEED=50;
-  ENEMY_COOLDOWN=8;
-  enemyFace=dennisFace
+  PLAYER_MAX_SPEED = 300;
+  LASER_MAX_SPEED = 50;
+  ENEMY_COOLDOWN = 8;
+  enemyFace = dennisFace
 };
 function clintMode() {
- // PLAYER_MAX_SPEED=1200;
+  // PLAYER_MAX_SPEED=1200;
   // LASER_MAX_SPEED=50;
   // ENEMY_COOLDOWN=20;
   PLAYER_MAX_SPEED = 600.0;
   LASER_MAX_SPEED = 300.0;
   ENEMY_COOLDOWN = 5.0;
-  enemyFace=clintFace;
+  enemyFace = clintFace;
 };
- 
+
 const GAME_STATE = {
   lastTime: Date.now(),
   leftPressed: false,
@@ -160,7 +160,7 @@ function createPlayer($container) {
   $player.className = "player";
   $container.appendChild($player);
   setPosition($player, GAME_STATE.playerX, GAME_STATE.playerY);
-  
+
 }
 
 function destroyPlayer($container, player) {
@@ -168,9 +168,9 @@ function destroyPlayer($container, player) {
   GAME_STATE.gameOver = true;
   // gameMusic.play()
   gameMusic.pause();
-gameMusic.currentTime = 0;
-explosion.play();
-  currentScore=currentScore * lossMulti;
+  gameMusic.currentTime = 0;
+  explosion.play();
+  currentScore = currentScore * lossMulti;
   console.log(currentScore)
 }
 
@@ -180,7 +180,7 @@ function updatePlayer(dt, $container) {
   }
   if (GAME_STATE.rightPressed) {
     GAME_STATE.playerX += dt * PLAYER_MAX_SPEED;
-    songCounter=true;
+    songCounter = true;
     console.log(songCounter)
   }
 
@@ -209,7 +209,7 @@ function createLaser($container, x, y) {
   $container.appendChild($element);
   const laser = { x, y, $element };
   GAME_STATE.lasers.push(laser);
-  songCounter=true;
+  songCounter = true;
   startMusic();
   setPosition($element, x, y);
 }
@@ -286,9 +286,9 @@ function destroyEnemy($container, enemy) {
   console.log(currentScore);
   document.querySelector(".score").textContent = "Score Keeper: " + currentScore;
   // const audio = new Audio("./assets/sounds/explosion.wav");
-//   audio.pause();
-// audio.currentTime = 0;
-//   audio.play();
+  //   audio.pause();
+  // audio.currentTime = 0;
+  //   audio.play();
 }
 
 function createEnemyLaser($container, x, y) {
@@ -371,7 +371,7 @@ function update(e) {
     };
     gameMusic.pause();
     dolphin.play();
-gameMusic.currentTime = 0;
+    gameMusic.currentTime = 0;
 
     $.ajax('/api/newscore', {
       type: 'POST',
@@ -414,31 +414,31 @@ function onKeyUp(e) {
 //these statements work, we just need to put in the correct conditions
 //leave them commented out for now
 
- //game mode
- if (testnumber=testnumber) {
-  
+//game mode
+if (testnumber = testnumber) {
+
   // clintMode();
-  joeMode();
-// }
-// }
-//  if (condition) {
-//   joeMode()
-// }
-// if (condition) {
-//   denisMode()
+  clintMode();
+  // }
+  // }
+  //  if (condition) {
+  //   joeMode()
+  // }
+  // if (condition) {
+  //   denisMode()
 } else {
   denisMode()
 }
 //game difficulty
-if (testnumber!=testnumber) {
-  
+if (testnumber != testnumber) {
+
   diffEasy();
-// }
-//  if (condition) {
-//   diffMedium()
-// }
-// if (condition) {
-//   diffHard()
+  // }
+  //  if (condition) {
+  //   diffMedium()
+  // }
+  // if (condition) {
+  //   diffHard()
 } else {
   // diffMedium()
   diffHard()
@@ -448,9 +448,10 @@ init();
 
 
 function startMusic() {
- if (songCounter=true){
-   gameMusic.play()}
- }
+  if (songCounter = true) {
+    gameMusic.play()
+  }
+}
 
 let launchBtn = $('#launchgame');
 
