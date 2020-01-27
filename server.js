@@ -24,9 +24,11 @@ app.use(express.static("public"));
 // ADD ROUTES HERE
 const htmlRoutes = require('./controllers/html-controller');
 const accountRoutes = require('./controllers/account-controller');
+const scoreRoutes = require('./controllers/highscore-controller');
 
 app.use(htmlRoutes);
 app.use(accountRoutes);
+app.use(scoreRoutes);
 
 
 

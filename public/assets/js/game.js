@@ -16,72 +16,98 @@ const ENEMY_VERTICAL_PADDING = 70;
 const ENEMY_VERTICAL_SPACING = 80;
 var ENEMY_COOLDOWN = 5.0;
 
+
 var currentScore = 0;
-const pointValue = 1000;
+var pointValue = 1000;
 var scoreMultiplier = "";
 var lossMulti=.25;
+var enemyFace="";
+var testnumber=1;
+var songCounter=false;
 
-const shipOne = "./assets/img/player-red-1.png";
-const shipTwo = "public/assets/img/player-blue-1.png";
-const shipThree = "public/assets/img/player-green-1.png";
+const explosion = new Audio("./assets/sounds/explosion.mp3");
+const dolphin = new Audio("./assets/sounds/dolphin.mp3");
+// const explosion = new Audio("./assets/sounds/explosion.wav");
 
-const songOne = "public/assets/sounds/firsttry.wav";
-const songTwo = "public/assets/sounds/firsttry.wav";
-const songThree = "public/assets/sounds/firsttry.wav";
 
-function diffEasy(PLAYER_MAX_SPEED, LASER_MAX_SPEED, ENEMY_COOLDOWN) {
+//  var gameMusic = new Audio("./assets/sounds/flow.mp3");
+//  var gameMusic = new Audio("./assets/sounds/panic.mp3");
+ var gameMusic = new Audio("./assets/sounds/drunken.mp3");
+
+
+const joeFace="./assets/img/joe.png" ;
+const dennisFace="./assets/img/denis.png";
+const clintFace="./assets/img/clint.png";
+
+const shipone = "./assets/img/player-red-1.png";
+const shiptwo = "./assets/img/player-blue-1.png";
+const shipthree = "./assets/img/player-green-1.png";
+
+const songone = "./assets/sounds/flow.mp3";
+const songtwo = "./assets/sounds/panic.mp3";
+const songthree = "./assets/sounds/drunken.mp3";
+
+
+function diffEasy() {
   var easy = .5;
   var easyLaser = 2;
-  scoreMultiplier = .01;
-  PLAYER_MAX_SPEED = PLAYER_MAX_SPEED * easy;
+  // scoreMultiplier = .01;
+  PLAYER_MAX_SPEED = PLAYER_MAX_SPEED * easyLaser;
   LASER_MAX_SPEED = LASER_MAX_SPEED * easy;
   ENEMY_COOLDOWN = ENEMY_COOLDOWN * easyLaser;
-  currentScore = currentScore * scoreMultiplier;
+  // LASER_COOLDOWN = .5;
+ pointValue=10
 };
 
-function diffMedium(PLAYER_MAX_SPEED, LASER_MAX_SPEED, ENEMY_COOLDOWN) {
+function diffMedium() {
   var medium = 1;
   var mediumLaser = 1;
-  scoreMultiplier = 1;
-  PLAYER_MAX_SPEED = PLAYER_MAX_SPEED * medium;
+  // scoreMultiplier = 1;
+  PLAYER_MAX_SPEED=600;
   LASER_MAX_SPEED = LASER_MAX_SPEED * medium;
   ENEMY_COOLDOWN = ENEMY_COOLDOWN * mediumLaser;
-  currentScore = currentScore * scoreMultiplier;
+  // LASER_COOLDOWN = 1;
+  pointValue=1000
 };
 
-function diffHard(PLAYER_MAX_SPEED, LASER_MAX_SPEED, ENEMY_COOLDOWN) {
-  var hardcore = 2;
-  var hardcoreLaser = .5;
-  scoreMultiplier = 100;
-  PLAYER_MAX_SPEED = PLAYER_MAX_SPEED * hardcore;
-  LASER_MAX_SPEED = LASER_MAX_SPEED * hardcore;
-  ENEMY_COOLDOWN = ENEMY_COOLDOWN * hardcoreLaser;
-  currentScore = currentScore * scoreMultiplier;
+function diffHard() {
+  var hardcore = 1.5;
+  var hardcoreLaser = .75;
+  var hardcoreSpeed = .75;
+  // scoreMultiplier = 100;
+  PLAYER_MAX_SPEED = PLAYER_MAX_SPEED*hardcoreSpeed;
+  LASER_MAX_SPEED = LASER_MAX_SPEED*hardcore;
+  ENEMY_COOLDOWN = ENEMY_COOLDOWN*hardcoreLaser;
+  // LASER_COOLDOWN = 1;
+  pointValue=100000;
+  lossMulti=.0025;
 };
 
 function joeMode() {
-  PLAYER_MAX_SPEED=600;
-  LASER_MAX_SPEED=50;
-  ENEMY_COOLDOWN=.1;
-
+  PLAYER_MAX_SPEED=800;
+  joeMulti = 2;
+  LASER_MAX_SPEED=600;
+  ENEMY_COOLDOWN=10;
+  pointValue=pointValue*joeMulti;
+  enemyFace=joeFace;
 };
 function denisMode() {
-  PLAYER_MAX_SPEED=200;
-  LASER_MAX_SPEED=100;
-  ENEMY_COOLDOWN=2;
-  
+  LASER_COOLDOWN = 1;
+  PLAYER_MAX_SPEED=300;
+  LASER_MAX_SPEED=50;
+  ENEMY_COOLDOWN=8;
+  enemyFace=dennisFace
 };
 function clintMode() {
-  PLAYER_MAX_SPEED=1200;
-  LASER_MAX_SPEED=1200;
-  ENEMY_COOLDOWN=2;
-  
+ // PLAYER_MAX_SPEED=1200;
+  // LASER_MAX_SPEED=50;
+  // ENEMY_COOLDOWN=20;
+  PLAYER_MAX_SPEED = 600.0;
+  LASER_MAX_SPEED = 300.0;
+  ENEMY_COOLDOWN = 5.0;
+  enemyFace=clintFace;
 };
-//this function is currently not working
-function playMusic() {
-  const audio = new Audio("public/assets/sounds/firsttry.wav");
-  audio.play();
-}
+ 
 const GAME_STATE = {
   lastTime: Date.now(),
   leftPressed: false,
@@ -95,7 +121,6 @@ const GAME_STATE = {
   enemyLasers: [],
   gameOver: false
 };
-
 
 
 function rectsIntersect(r1, r2) {
@@ -131,17 +156,20 @@ function createPlayer($container) {
   GAME_STATE.playerX = GAME_WIDTH / 2;
   GAME_STATE.playerY = GAME_HEIGHT - 50;
   const $player = document.createElement("img");
-  $player.src = shipOne;
+  $player.src = shipone;
   $player.className = "player";
   $container.appendChild($player);
   setPosition($player, GAME_STATE.playerX, GAME_STATE.playerY);
+  
 }
 
 function destroyPlayer($container, player) {
   $container.removeChild(player);
   GAME_STATE.gameOver = true;
-  const audio = new Audio("public/assets/sounds/sfx-lose.ogg");
-  audio.play();
+  // gameMusic.play()
+  gameMusic.pause();
+gameMusic.currentTime = 0;
+explosion.play();
   currentScore=currentScore * lossMulti;
   console.log(currentScore)
 }
@@ -152,6 +180,8 @@ function updatePlayer(dt, $container) {
   }
   if (GAME_STATE.rightPressed) {
     GAME_STATE.playerX += dt * PLAYER_MAX_SPEED;
+    songCounter=true;
+    console.log(songCounter)
   }
 
   GAME_STATE.playerX = clamp(
@@ -179,8 +209,8 @@ function createLaser($container, x, y) {
   $container.appendChild($element);
   const laser = { x, y, $element };
   GAME_STATE.lasers.push(laser);
-  const audio = new Audio("public/assets/sounds/firsttrsssy.ogg");
-  audio.play();
+  songCounter=true;
+  startMusic();
   setPosition($element, x, y);
 }
 
@@ -217,7 +247,7 @@ function destroyLaser($container, laser) {
 
 function createEnemy($container, x, y) {
   const $element = document.createElement("img");
-  $element.src = "./assets/img/denis.png";
+  $element.src = enemyFace;
   $element.className = "enemy";
   $container.appendChild($element);
   const enemy = {
@@ -253,7 +283,12 @@ function destroyEnemy($container, enemy) {
   $container.removeChild(enemy.$element);
   enemy.isDead = true;
   currentScore = currentScore + pointValue;
-  console.log(currentScore)
+  console.log(currentScore);
+  document.querySelector(".score").textContent = "Score Keeper: " + currentScore;
+  // const audio = new Audio("./assets/sounds/explosion.wav");
+//   audio.pause();
+// audio.currentTime = 0;
+//   audio.play();
 }
 
 function createEnemyLaser($container, x, y) {
@@ -312,13 +347,38 @@ function update(e) {
   const dt = (currentTime - GAME_STATE.lastTime) / 1000.0;
 
   if (GAME_STATE.gameOver) {
+    // currentScore = currentScore * lossmulti;
+    document.querySelector(".score").textContent = "Score Keeper: " + currentScore;
+    document.querySelector(".finalScoreLoss").textContent = "Final Score: " + currentScore;
     document.querySelector(".game-over").style.display = "block";
+    let scoreObj = {
+      currentScore
+    };
+    $.ajax('/api/newscore', {
+      type: 'POST',
+      data: scoreObj
+    }).then(() => {
+      console.log('new score added');
+    });
     return;
-    currentScore= currentScore * lossmulti;
   }
 
   if (playerHasWon()) {
+    document.querySelector(".finalScoreWin").textContent = "Final Score: " + currentScore;
     document.querySelector(".congratulations").style.display = "block";
+    let scoreObj = {
+      currentScore
+    };
+    gameMusic.pause();
+    dolphin.play();
+gameMusic.currentTime = 0;
+
+    $.ajax('/api/newscore', {
+      type: 'POST',
+      data: scoreObj
+    }).then(() => {
+      console.log('new score added');
+    });
     return;
   }
 
@@ -351,12 +411,76 @@ function onKeyUp(e) {
     GAME_STATE.spacePressed = false;
   }
 }
+//these statements work, we just need to put in the correct conditions
+//leave them commented out for now
+
+ //game mode
+ if (testnumber=testnumber) {
+  
+  // clintMode();
+  joeMode();
+// }
+// }
+//  if (condition) {
+//   joeMode()
+// }
+// if (condition) {
+//   denisMode()
+} else {
+  denisMode()
+}
+//game difficulty
+if (testnumber!=testnumber) {
+  
+  diffEasy();
+// }
+//  if (condition) {
+//   diffMedium()
+// }
+// if (condition) {
+//   diffHard()
+} else {
+  // diffMedium()
+  diffHard()
+}
 
 init();
-// window.onload = function playMusic(){
-//   const audio = new Audio("public/assets/sounds/firsttry.wav");
-//   audio.play();
-// }
+
+
+function startMusic() {
+ if (songCounter=true){
+   gameMusic.play()}
+ }
+
+let launchBtn = $('#launchgame');
+
+
+function songSelection() {
+  launchBtn.click(() => {
+    return $('input[name="song"]:checked').id;
+  })
+}
+
+function shipSelection() {
+  launchBtn.click(() => {
+    return $('input[name="ship"]:checked').id;
+  })
+}
+
+function modeSelection() {
+  launchBtn.click(() => {
+    return $('input[name="mode"]:checked').id;
+  })
+}
+
+function viewLogin() {
+  $(location).attr('href', './');
+}
+
+function viewHighscore() {
+  $(location).attr('href', '.highscore');
+}
+
 window.addEventListener("keydown", onKeyDown);
 window.addEventListener("keyup", onKeyUp);
 window.requestAnimationFrame(update);

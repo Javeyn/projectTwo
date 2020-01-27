@@ -1,6 +1,6 @@
-# projectTwo
+# Spinach Shooters
 ### An amazing game by Nick, Jenny, Austin, and Jack
-
+![image of Launch Screen](public/assets/img/homeScreen.png)
 ## Table of Contents
 
 [Description](#Description)
@@ -11,17 +11,37 @@
 
 [GameModes](#GameModes)
 
-[Notes](#Notes)
+[AboutUs](#AboutUs)
 
 ## Description
 
-Code Shooters takes a familiar game and gives it a **big** flavor boost. Start by creating your account and logging in to begin tracking your scores, skills and wins in each game mode!
+Spinach Shooters takes a familiar game and gives it a **big** flavor boost. Start by creating your account and logging in to begin tracking your scores, skills and wins in each game mode!
 
 ## StartingUp
 
 When you start the app up, you are presented with a login screen. You will enter your credentials here if you have previously created an account. Otherwise, please proceed to the create acount page, and create your account.
 
-Once you have created your account and successfully logged in, you will arrive at the launch screen. From the launch screen you will be able to see your top scores, the top 5 scores from all players, and how many wins you have accumulated in each game mode. From here you can also select a background soundtrack, a ship of choice, and a game mode. Once you are ready, click "Launch" at the bottom of the screen to begin playing the game.
+![image of create account Screen](public/assets/img/createScreen.png)
+
+<ul>
+<li>In field "1" you will enter in your login name. Make sure to pick something easy to remember. Case sensitivity is important!</li>
+
+<li>In field's "2" and "3" you will be prompted to enter in a password used to log into Spinach Shooters. Make sure it is easy to remember. Case sensitivity again is uber important!</li>
+
+</ul>
+
+![image of launchscreen](public/assets/img/launchScreen.png)
+<br>
+Once you have created your account and successfully logged in, you will arrive at the launch screen.
+
+<ul>
+<li>Field "1" your username is displayed</li>
+<li>Field "2" will show your high score and difficulty.</li>
+<li>Field "3" will allow you to select your musical number that plays during the game.</li>
+<li>Field "4" will allow you to choose one of our amazing ships.</li>
+<li>Field "5" will allow you to choose one of our amazing game mode.</li>
+<li>Field "6" will allow you to select a difficulty that feels right for you.</li>
+</ul>
 
 ## Functionality
 
@@ -38,17 +58,43 @@ Our game uses a variety of different libraries and technology, including:
 
 ## GameModes
 
-Code Shooters comes with three game modes, and 3 difficulties.
+Spinach Shooters comes with three game modes, and 3 difficulties.
 
-# Joe'pocolypse Mode
-In Jo-poc mode, You will be tasked with fighting off **redacted** with **redacted**. The Joes will fire incredibly fast lasers, and if you dont have Joe-di reflexes, you will end up as Code Dust!
+### Joe'pocolypse Mode
+In Jo-poc mode, You will be tasked with fighting off a fleet of Joes with your trusty spinach shooter. The Joes will fire incredibly fast lasers, and if you dont have Joe-di reflexes, you will end up as shrimp dust!
 
-# Menacing Denis Mode
-In Men-den mode,You will be tasked with fighting off **redacted** with **redacted**. The Denis' will fire tons of slow lasers, and your ship will also move much slower. It can be menacing if you arent ready for the wave of **redacted** constantly flying at you!
+### Menacing Denis Mode
+In Men-den mode,You will be tasked with fighting off a fleet of Denis'. The Denis' will fire tons of slow lasers, and your ship will also move much slower. It can be menacing if you arent ready for the wave of manatees constantly flying at you!
 
-# Clint'astrophe Mode
-In Clint mode, You will be tasked with fighting off **redacted** with **redacted**. The Clint's seem like a normal challenge, but your firing rate will be drastically reduced. Make each shot count, because one wrong move and its game over!
+### Clint'astrophe Mode
+In Clint mode, You will be tasked with fighting off a fleet of Clints. The Clint's seem like a normal challenge, but your firing rate will be drastically reduced. Make each shot count, because one wrong move and its game over!
 
-## Notes
+## AboutUs
 
-This is the place where we thank eachother and also talk about what was hard with this project. So, thanks guys. Thanks Joe/Denis/Clint. Thanks coffee, and thanks nap time.
+We are the builders and contributors to Spinach Shooters.
+
+### Jenny Thurnau
+![Jenny](public/assets/img/jenny.jpg)
+<br>
+[Jennys github](https://github.com/CraazyCraaz "Jenny Thurnau")
+
+### Austin Finke
+![alt text](public/assets/img/austin.jpg)
+<br>
+[Austins github](https://github.com/austinfinke "Austin Finke")
+
+### Jack Sorensen
+![alt text](public/assets/img/jack.jpg)
+<br>
+[Jacks github](https://github.com/javeyn "Jack Sorensen")
+
+### Nick Seto
+![alt text](public/assets/img/nick.jpg)
+<br>
+[Nicks github](https://github.com/nick555555e "Nick Seto")
+<br>
+
+We want to thank everyone for taking the time to play. Thank you Joe, Denis, and Clint for your ideas, feedback, and help. 
+
+To see the repo for this project, please visit the [repo](https://github.com/Javeyn/projectTwo "Spinach Shooters Repo") on github.
+

@@ -26,6 +26,7 @@ $(function () {
         data: newAccount
       }).then(() => {
         console.log('new account added');
+        $(location).attr('href', './');
       })
     }
   })
@@ -34,14 +35,34 @@ $(function () {
     $(location).attr('href', '/');
   })
 
+  $('#logout').click(() => {
+    $(location).attr('href', '/');
+  })
+
   $('#login').click(() => {
     let name = $('.username').val().trim();
+    let pass = $('.password').val().trim();
     let query = `/api/account/${name}`;
+
+    let pwObj = {
+      name,
+      pass
+    }
+
     $.ajax(query, {
-      type: 'GET',
-    }).then(() => {
-      $(location).attr('href', './usersetup')
+      type: 'POST',
+      data: pwObj
+    }).then((stuff) => {
+      if (stuff === 'OK') {
+        $(location).attr('href', `./usersetup?name=${name}`)
+      } else {
+        alert('incorrect login information');
+      }
     })
   })
+
+  $('#launchgame').click(() => {
+    $(location).attr('href', '/launch');
+  });
 
 })
