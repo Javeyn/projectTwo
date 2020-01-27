@@ -63,7 +63,7 @@ $(function () {
       data: pwObj
     }).then((stuff) => {
       if(stuff === 'OK') {
-        $(location).attr('href', './usersetup')
+        $(location).attr('href', `./usersetup?name=${name}`)
       } else {
         alert('incorrect login information');
       }
