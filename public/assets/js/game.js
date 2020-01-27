@@ -478,7 +478,7 @@ function viewLogin() {
 }
 
 function viewHighscore() {
-  $(location).attr('href', '.highscore');
+  $(location).attr('href', './highscore');
 }
 
 window.addEventListener("keydown", onKeyDown);
