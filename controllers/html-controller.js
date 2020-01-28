@@ -1,21 +1,36 @@
 const express = require("express");
 const db = require('../models');
 const router = express.Router();
+var oneLinerJoke = require('one-liner-joke');
 
-  // send homepage
-  router.get('/', (req, res) => {
-    res.render('index');
-  })
+// send homepage
+router.get('/', (req, res) => {
+  res.render('index');
+})
 
-  // send create login page
-  router.get('/create', (req, res) => {
-    res.render('create');
-  })
+router.get('/randojoke', (req, res) => {
+  const joke = oneLinerJoke.getRandomJoke({
+    'exclude_tags': ['fat', 'black', 'racist', 'marriage']
+  });
+  res.json(joke.body)
+})
 
-  // send highscore page
-  router.get('/highscores', (req, res) => {
-    res.render('highscores');
+// send create login page
+router.get('/create', (req, res) => {
+  res.render('create');
+})
+
+// send highscore page
+router.get('/highscores', (req, res) => {
+  db.Highscore.findAll({}).then((data) => {
+    console.log(data);
+    const rawData = data.map(obj=>obj.get({plain:true}));
+    let hsObj = {
+      highscores: rawData
+    };
+    res.render('highscores', hsObj);
   })
+})
 
 // send game setup page
 router.get('/usersetup', (req, res) => {
@@ -31,12 +46,11 @@ router.get('/usersetup', (req, res) => {
   })
 })
 
+// send game
+router.get('/launch', (req, res) => {
+  res.render('game')
+})
 
-  // send game
-  router.get('/launch', (req, res) => {
-    res.render('game')
-  })
-
-  module.exports = router;
+module.exports = router;
 
 // THESE ROUTES DO NOT WORK YET, WAITING ON HANDLEBARS PAGES
