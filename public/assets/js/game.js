@@ -417,8 +417,8 @@ function onKeyUp(e) {
  //game mode
  if (testnumber=testnumber) {
   
-  // clintMode();
-  joeMode();
+   clintMode();
+  //joeMode();
 // }
 // }
 //  if (condition) {
@@ -440,8 +440,8 @@ if (testnumber!=testnumber) {
 // if (condition) {
 //   diffHard()
 } else {
-  // diffMedium()
-  diffHard()
+   diffMedium()
+  //diffHard()
 }
 
 init();
